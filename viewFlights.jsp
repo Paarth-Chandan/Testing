@@ -1,10 +1,13 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
 
 <html>
 
 <head>
 
-<title>All Flights</title>
+<title>View Flights</title>
 
 </head>
 
@@ -16,12 +19,12 @@
 
 <tr>
 
-<th>ID</th>
+<th>Flight ID</th>
 <th>Flight Number</th>
 <th>Source</th>
 <th>Destination</th>
-<th>Departure</th>
-<th>Arrival</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
 <th>Capacity</th>
 <th>Available Seats</th>
 <th>Price</th>
@@ -47,6 +50,14 @@
 </c:forEach>
 
 </table>
+
+<br><br>
+
+<a href="add">
+
+Add New Flight
+
+</a>
 
 </body>
 
