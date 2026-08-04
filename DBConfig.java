@@ -18,7 +18,7 @@ public class DBConfig {
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/flightreservation");
         ds.setUsername("root");
-        ds.setPassword("root");
+        ds.setPassword("root");   // Change this if your MySQL password is different
 
         return ds;
     }
@@ -27,5 +27,4 @@ public class DBConfig {
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
-
 }
