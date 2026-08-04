@@ -1,0 +1,117 @@
+CREATE DATABASE flightreservation;
+
+USE flightreservation;
+
+CREATE TABLE user (
+
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    name VARCHAR(100) NOT NULL,
+
+    email VARCHAR(100) UNIQUE NOT NULL,
+
+    password VARCHAR(100) NOT NULL,
+
+    role VARCHAR(20) NOT NULL
+
+);
+
+CREATE TABLE flight (
+
+    flight_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    flight_number VARCHAR(20) UNIQUE NOT NULL,
+
+    source VARCHAR(100) NOT NULL,
+
+    destination VARCHAR(100) NOT NULL,
+
+    departure_time DATETIME NOT NULL,
+
+    arrival_time DATETIME NOT NULL,
+
+    capacity INT NOT NULL,
+
+    available_seats INT NOT NULL,
+
+    price DOUBLE NOT NULL
+
+);
+
+CREATE TABLE booking (
+
+    booking_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    booking_date DATE NOT NULL,
+
+    journey_date DATE NOT NULL,
+
+    seats INT NOT NULL,
+
+    total_price DOUBLE NOT NULL,
+
+    status VARCHAR(20) NOT NULL,
+
+    user_id INT,
+
+    flight_id INT,
+
+    FOREIGN KEY(user_id)
+        REFERENCES user(user_id),
+
+    FOREIGN KEY(flight_id)
+        REFERENCES flight(flight_id)
+
+);
+
+CREATE TABLE ticket (
+
+    ticket_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    passenger_name VARCHAR(100) NOT NULL,
+
+    gender VARCHAR(20) NOT NULL,
+
+    age INT NOT NULL,
+
+    seat_number VARCHAR(10),
+
+    pnr VARCHAR(20) UNIQUE,
+
+    booking_id INT,
+
+    FOREIGN KEY(booking_id)
+        REFERENCES booking(booking_id)
+
+);
+
+
+
+INSERT INTO user(name,email,password,role)
+VALUES
+('Admin','admin@gmail.com','admin123','ADMIN');
+INSERT INTO user(name,email,password,role)
+VALUES
+('John','john@gmail.com','12345','USER');
+
+INSERT INTO flight
+(flight_number,source,destination,departure_time,arrival_time,capacity,available_seats,price)
+VALUES
+
+('AI101','Delhi','Mumbai',
+'2026-08-10 10:00:00',
+'2026-08-10 12:00:00',
+100,
+100,
+4500);
+
+INSERT INTO flight
+(flight_number,source,destination,departure_time,arrival_time,capacity,available_seats,price)
+VALUES
+
+('AI102','Bangalore','Delhi',
+'2026-08-11 09:00:00',
+'2026-08-11 12:30:00',
+120,
+120,
+5500);
