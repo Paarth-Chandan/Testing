@@ -45,23 +45,27 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String email,
-                        @RequestParam String password,
-                        Model model) {
+@PostMapping("/login")
+public String login(@RequestParam String email,
+                    @RequestParam String password,
+                    Model model) {
 
-        User user = userService.login(email, password);
+    User user = userService.login(email, password);
 
-        if (user == null) {
+    if (user == null) {
 
-            model.addAttribute("error", "Invalid Credentials");
+        model.addAttribute("error", "Invalid Email or Password");
 
-            return "login";
+        return "login";
+    }
 
-        }
+    if (user.getRole().equalsIgnoreCase("ADMIN")) {
 
-        return "userDashboard";
+        return "adminDashboard";
 
     }
 
+    return "userDashboard";
+
+}
 }
