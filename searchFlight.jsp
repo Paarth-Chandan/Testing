@@ -1,9 +1,14 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
 
 <html>
 
 <head>
-    <title>Search Flights</title>
+
+<title>Search Flights</title>
+
 </head>
 
 <body>
@@ -28,7 +33,7 @@ Destination
 
 </form>
 
-<hr>
+<br><br>
 
 <table border="1">
 
@@ -37,9 +42,9 @@ Destination
 <th>Flight Number</th>
 <th>Source</th>
 <th>Destination</th>
-<th>Departure</th>
-<th>Arrival</th>
-<th>Seats</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Available Seats</th>
 <th>Price</th>
 <th>Action</th>
 
@@ -59,9 +64,9 @@ Destination
 
 <td>
 
-<a href="../booking/book?flightId=${flight.flightId}">
+<a href="../booking/book">
 
-Book
+Book Flight
 
 </a>
 
