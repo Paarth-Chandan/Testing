@@ -35,4 +35,25 @@ public class FlightServiceImpl implements FlightService {
 
     }
 
+    @Override
+    public Flight getFlightById(int flightId) {
+
+        return flightDao.getFlightById(flightId);
+
+    }
+
+    @Override
+    public void updateFlight(Flight flight) {
+
+        flightDao.updateFlight(flight);
+
+    }
+
+    @Override
+    public void deleteFlight(int flightId) {
+
+        flightDao.deleteFlight(flightId);
+
+    }
+
 }
