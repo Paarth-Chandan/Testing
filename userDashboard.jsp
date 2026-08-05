@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -8,15 +10,31 @@
 
 <body>
 
-<h2>Welcome User</h2>
+<h2>User Dashboard</h2>
 
 <hr>
 
-<a href="../flight/search">Search Flights</a>
+<a href="../flight/search">
+
+Search Flight
+
+</a>
 
 <br><br>
 
-<a href="../booking/myBookings">My Bookings</a>
+<a href="../booking/myBookings">
+
+My Bookings
+
+</a>
+
+<br><br>
+
+<a href="../user/logout">
+
+Logout
+
+</a>
 
 </body>
 
