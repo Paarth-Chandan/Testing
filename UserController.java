@@ -22,3 +22,17 @@ public String login(@RequestParam String email,
 
     return "redirect:/user/dashboard";
 }
+
+@GetMapping("/dashboard")
+public String dashboard() {
+
+    return "user/userDashboard";
+}
+
+@GetMapping("/logout")
+public String logout(HttpSession session) {
+
+    session.invalidate();
+
+    return "redirect:/";
+}
