@@ -3,7 +3,6 @@ package com.flightreservation.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +36,23 @@ public class TicketDaoImpl implements TicketDao {
         String sql = "SELECT * FROM ticket WHERE booking_id=?";
 
         return jdbcTemplate.query(sql,
-                new BeanPropertyRowMapper<>(Ticket.class),
+
+                (rs, rowNum) -> {
+
+                    Ticket ticket = new Ticket();
+
+                    ticket.setTicketId(rs.getInt("ticket_id"));
+                    ticket.setPassengerName(rs.getString("passenger_name"));
+                    ticket.setGender(rs.getString("gender"));
+                    ticket.setAge(rs.getInt("age"));
+                    ticket.setSeatNumber(rs.getString("seat_number"));
+                    ticket.setPnr(rs.getString("pnr"));
+                    ticket.setBookingId(rs.getInt("booking_id"));
+
+                    return ticket;
+
+                },
+
                 bookingId);
 
     }
