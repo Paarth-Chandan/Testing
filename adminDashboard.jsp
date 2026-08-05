@@ -16,7 +16,7 @@
 
 <br><br>
 
-<a href="addFlight.jsp">Add Flight</a>
+<a href="../flight/add">Add Flight</a>
 
 </body>
 
