@@ -3,12 +3,10 @@ package com.flightreservation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.flightreservation.service.BookingService;
+import com.flightreservation.service.TicketService;
 
 @Controller
 @RequestMapping("/booking")
@@ -17,23 +15,13 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @GetMapping("/book")
-    public String bookingPage(@RequestParam int flightId,
-                              Model model) {
+    @Autowired
+    private TicketService ticketService;
 
-        model.addAttribute("flightId", flightId);
+    @GetMapping("/book")
+    public String bookingPage() {
 
         return "bookingForm";
-    }
-
-    @PostMapping("/confirmBooking")
-    public String confirmBooking(@RequestParam int flightId,
-                                 @RequestParam int userId,
-                                 @RequestParam int seats) {
-
-        bookingService.bookFlight(userId, flightId, seats);
-
-        return "bookingConfirmation";
     }
 
     @GetMapping("/confirmation")
@@ -48,8 +36,12 @@ public class BookingController {
         return "myBookings";
     }
 
-    @GetMapping("/tickets")
-    public String tickets() {
+    @GetMapping("/tickets/{bookingId}")
+    public String tickets(@PathVariable int bookingId,
+                          Model model) {
+
+        model.addAttribute("tickets",
+                ticketService.getTicketsByBooking(bookingId));
 
         return "viewTickets";
     }
