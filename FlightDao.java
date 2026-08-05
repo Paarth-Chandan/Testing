@@ -12,4 +12,10 @@ public interface FlightDao {
 
     List<Flight> searchFlights(String source, String destination);
 
+    Flight getFlightById(int flightId);
+
+    void updateFlight(Flight flight);
+
+    void deleteFlight(int flightId);
+
 }
