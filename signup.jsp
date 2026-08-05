@@ -1,18 +1,23 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form"
+uri="http://www.springframework.org/tags/form"%>
+
+<!DOCTYPE html>
 
 <html>
 
 <head>
 
-<title>Sign Up</title>
+<title>Register</title>
 
 </head>
 
 <body>
 
-<h2>Register</h2>
+<h2>User Registration</h2>
 
-<form:form action="register" modelAttribute="user" method="post">
+<form:form action="register"
+method="post"
+modelAttribute="user">
 
 Name
 
