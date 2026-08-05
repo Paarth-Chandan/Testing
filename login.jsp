@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,7 +11,7 @@
 
 <body>
 
-<h2>Login</h2>
+<h2>User Login</h2>
 
 <form action="login" method="post">
 
@@ -28,7 +31,13 @@ Password
 
 </form>
 
+<br>
+
+<span style="color:red">
+
 ${error}
+
+</span>
 
 </body>
 
