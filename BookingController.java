@@ -1,10 +1,13 @@
 package com.flightreservation.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.flightreservation.model.User;
 import com.flightreservation.service.BookingService;
 import com.flightreservation.service.TicketService;
 
@@ -21,19 +24,29 @@ public class BookingController {
     @GetMapping("/book")
     public String bookingPage() {
 
-        return "bookingForm";
+        return "booking/bookingForm";
+
     }
 
     @GetMapping("/confirmation")
     public String confirmation() {
 
-        return "bookingConfirmation";
+        return "booking/bookingConfirmation";
+
     }
 
     @GetMapping("/myBookings")
-    public String myBookings() {
+    public String myBookings(HttpSession session,
+                             Model model) {
 
-        return "myBookings";
+        User user =
+                (User) session.getAttribute("loggedInUser");
+
+        model.addAttribute("bookings",
+                bookingService.getBookingsByUser(user.getUserId()));
+
+        return "booking/myBookings";
+
     }
 
     @GetMapping("/tickets/{bookingId}")
@@ -43,7 +56,8 @@ public class BookingController {
         model.addAttribute("tickets",
                 ticketService.getTicketsByBooking(bookingId));
 
-        return "viewTickets";
+        return "booking/viewTickets";
+
     }
 
 }
