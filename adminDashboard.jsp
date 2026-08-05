@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -8,15 +10,31 @@
 
 <body>
 
-<h2>Welcome Admin</h2>
+<h2>Admin Dashboard</h2>
 
 <hr>
 
-<a href="../flight/view">View Flights</a>
+<a href="../admin/addFlight">
+
+Add Flight
+
+</a>
 
 <br><br>
 
-<a href="../flight/add">Add Flight</a>
+<a href="../admin/viewFlights">
+
+View Flights
+
+</a>
+
+<br><br>
+
+<a href="../user/logout">
+
+Logout
+
+</a>
 
 </body>
 
