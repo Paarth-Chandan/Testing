@@ -6,7 +6,7 @@ import com.flightreservation.model.Booking;
 
 public interface BookingDao {
 
-    void addBooking(Booking booking);
+    int addBooking(Booking booking);
 
     List<Booking> getBookingsByUser(int userId);
 
